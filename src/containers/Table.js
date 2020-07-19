@@ -18,14 +18,17 @@ class table extends Component {
 						<th>Email</th>
 					</tr>
 					{this.props.users.map((user) => {
-						return (
-							<UserRow
-								deleteHandle={(uid) => this.props.onUserDelete(uid)}
-								id={user.id}
-								name={user.name}
-								email={user.email}
-							></UserRow>
-						);
+						if (user) {
+							return (
+								<UserRow
+									deleteHandle={(uid) => this.props.onUserDelete(uid)}
+									id={user.id}
+									name={user.name}
+									email={user.email}
+								></UserRow>
+							);
+						}
+						return null;
 					})}
 				</table>
 			);

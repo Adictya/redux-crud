@@ -12,9 +12,12 @@ export const editUser = (id, name, email) => {
 
 export const deleteUser = (id) => {
 	return (dispatch) => {
-		Axios.delete("https://redux-crud-898ea.firebaseio.com/users/" + id).then((response) => {
-			dispatch(delUser(id));
-		});
+		const I = id - 1;
+		Axios.delete("https://redux-crud-898ea.firebaseio.com/users/" + I + ".json").then(
+			(response) => {
+				dispatch(initUser(id));
+			}
+		);
 	};
 };
 
