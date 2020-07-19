@@ -22,6 +22,9 @@ class table extends Component {
 							return (
 								<UserRow
 									deleteHandle={(uid) => this.props.onUserDelete(uid)}
+									editHandle={(uid, uname, uemail) =>
+										this.props.onUserEdit(uid, uname, uemail)
+									}
 									id={user.id}
 									name={user.name}
 									email={user.email}

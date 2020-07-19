@@ -6,7 +6,13 @@ const userRow = (props) => {
 			<td>{props.id}</td>
 			<td>{props.name}</td>
 			<td>{props.email}</td>
-			<td>Edit</td>
+			<td
+				onClick={() =>
+					props.editHandle(props.id, "NAME ENTERED HERE", "EMAIL ENTERED HERE")
+				}
+			>
+				Edit
+			</td>
 			<td onClick={() => props.deleteHandle(props.id)}>Delete</td>
 		</tr>
 	);

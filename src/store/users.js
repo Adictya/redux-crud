@@ -2,11 +2,14 @@ import * as actionTypes from "./actions";
 import Axios from "axios";
 
 export const editUser = (id, name, email) => {
-	return {
-		type: actionTypes.EDIT_USER,
-		uid: id,
-		uname: name,
-		uemail: email,
+	return (dispatch) => {
+		const I = id - 1;
+		Axios.patch("https://redux-crud-898ea.firebaseio.com/users/" + I + ".json", {
+			name: name,
+			email: email,
+		}).then((response) => {
+			dispatch(initUser(id));
+		});
 	};
 };
 
@@ -18,13 +21,6 @@ export const deleteUser = (id) => {
 				dispatch(initUser(id));
 			}
 		);
-	};
-};
-
-export const delUser = (id) => {
-	return {
-		type: actionTypes.DELETE_USER,
-		uid: id,
 	};
 };
 
